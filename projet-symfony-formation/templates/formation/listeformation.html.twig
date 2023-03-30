@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if (message) %}
+    {{message}}
+{% endif %}
+{% for formation in ensFormations %}<br/>
+    <div class="card mb-3">
+    <div class="card-body"
+    <h5 class="card-title"> Libelle Produit: <b>{{ formation.produit.libelle }}<br/></b></h5>
+    <p class="card-text"> Date debut Formation :  <b>{{ formation.dateDebut|date("Y/m/d") }}</b><br/></p>
+    <p class="card-text">Nombres d'heures : <b>{{ formation.nbreHeures }}<br/></b></p>
+     <p class="card-text"> Departement : <b>{{ formation.departement }}<br/></b></p>
+     <p class="card-text"> Description : <b>{{ formation.sommaire }}<br/></b></p>
+    <br>
+    <a class="btn btn-danger" href="{{path('app_form_sup', {'id': formation.id})}}">Suppression</a></br>
+    </div>
+</div>
+
+{% endfor %}
+<br>
+<a class="btn btn-primary" href="{{path('app_formation_ajouter')}}">ajout d'une formation</a></br>
+<br>
+<a class="btn btn-primary" href="{{path('aff_employe')}}">liste des employes</a></br>
+</a>
+<br>
+<a class="btn btn-primary" href="{{path('login')}}">Deconnexion</a></br>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+{% endblock %}
